@@ -51,6 +51,56 @@ export const metadata: Metadata = {
   },
 };
 
+const schemaOrg = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: "MiKa Débarras",
+  description:
+    "Entreprise de débarras professionnelle à Lyon. Vide maison, vide cave, vide appartement, succession. Devis gratuit sous 24h.",
+  url: "https://www.mika-debarras.fr",
+  telephone: "+33623136783",
+  email: "contact@mika-debarras.fr",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Lyon",
+    addressRegion: "Auvergne-Rhône-Alpes",
+    addressCountry: "FR",
+    postalCode: "69000",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 45.7640,
+    longitude: 4.8357,
+  },
+  areaServed: {
+    "@type": "AdministrativeArea",
+    name: "Grand Lyon (Rhône 69)",
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "08:00",
+      closes: "19:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Saturday"],
+      opens: "09:00",
+      closes: "17:00",
+    },
+  ],
+  priceRange: "€€",
+  serviceType: [
+    "Vide Maison",
+    "Vide Cave",
+    "Vide Appartement",
+    "Vide Grenier",
+    "Débarras Succession",
+    "Débarras Bureau",
+  ],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -60,6 +110,10 @@ export default function RootLayout({
     <html lang="fr" className={inter.variable}>
       <head>
         <link rel="icon" href="/favicon.ico" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaOrg) }}
+        />
       </head>
       <body className="flex flex-col min-h-screen">
         <Header />
