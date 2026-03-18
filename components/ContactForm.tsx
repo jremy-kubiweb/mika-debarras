@@ -48,7 +48,8 @@ export default function ContactForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
-      const data = await res.json();
+      const text = await res.text();
+      const data = text ? JSON.parse(text) : {};
       if (!res.ok) throw new Error(data.error || "Erreur lors de l'envoi.");
       setSubmitted(true);
     } catch (err: unknown) {
