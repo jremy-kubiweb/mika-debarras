@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { buildMeta } from "@/lib/metadata";
+import Image from "next/image";
+import { IMG } from "@/lib/images";
 import { Phone, Mail, MapPin, Clock, CheckCircle2 } from "lucide-react";
 import ContactForm from "@/components/ContactForm";
 
@@ -14,8 +16,18 @@ export default function ContactPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-dark py-16 md:py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative bg-dark py-16 md:py-20 overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src={IMG.heroes.contact}
+            alt=""
+            fill
+            className="object-cover opacity-50"
+            priority
+          />
+        </div>
+        <div className="absolute inset-0 bg-dark/65" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl">
             <span className="badge mb-4">Contactez-nous</span>
             <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight">
@@ -91,6 +103,18 @@ export default function ContactPage() {
                   <Phone className="w-4 h-4" />
                   Appel direct
                 </a>
+              </div>
+
+              <div className="relative rounded-2xl overflow-hidden h-48">
+                <Image
+                  src={IMG.contactSide}
+                  alt="Débarras professionnel à Lyon"
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-dark/40 flex items-end p-4">
+                  <p className="text-white text-sm font-medium">Intervention professionnelle à Lyon</p>
+                </div>
               </div>
 
               <div className="card">
