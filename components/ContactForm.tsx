@@ -107,7 +107,7 @@ export default function ContactForm() {
               required
               value={form.telephone}
               onChange={handleChange}
-              placeholder="06 12 34 56 78"
+              placeholder="06 23 13 67 83"
               className="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:border-brand-400 focus:ring-2 focus:ring-brand-100 outline-none text-sm transition-all"
             />
           </div>

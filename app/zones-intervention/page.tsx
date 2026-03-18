@@ -97,9 +97,9 @@ export default function ZonesPage() {
                 ))}
               </ul>
               <div className="flex flex-col sm:flex-row gap-3">
-                <a href="tel:+33612345678" className="btn-phone text-sm">
+                <a href="tel:+33623136783" className="btn-phone text-sm">
                   <Phone className="w-4 h-4" />
-                  06 12 34 56 78
+                  06 23 13 67 83
                 </a>
                 <Link href="/contact" className="btn-secondary text-sm">
                   Devis gratuit

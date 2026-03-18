@@ -159,9 +159,9 @@ export default function HomePage() {
               Vide maison, vide cave, vide appartement, succession… MiKa Débarras intervient dans tout le Grand Lyon avec rapidité, professionnalisme et respect de l'environnement.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-3">
-              <a href="tel:+33612345678" className="btn-phone text-base">
+              <a href="tel:+33623136783" className="btn-phone text-base">
                 <Phone className="w-5 h-5" />
-                06 12 34 56 78
+                06 23 13 67 83
               </a>
               <Link href="/contact" className="btn-secondary text-base">
                 Demander un devis gratuit
@@ -526,9 +526,9 @@ export default function HomePage() {
             Contactez MiKa Débarras dès aujourd&apos;hui. Devis gratuit, sans engagement, réponse sous 24h.
           </p>
           <div className="mt-10 flex flex-col sm:flex-row gap-3 justify-center">
-            <a href="tel:+33612345678" className="btn-phone text-base">
+            <a href="tel:+33623136783" className="btn-phone text-base">
               <Phone className="w-5 h-5" />
-              06 12 34 56 78
+              06 23 13 67 83
             </a>
             <Link href="/contact" className="btn-secondary text-base">
               Demander un devis en ligne

@@ -222,9 +222,9 @@ export default function AProposPage() {
             Contactez notre équipe pour un devis gratuit ou simplement pour en savoir plus sur nos services.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <a href="tel:+33612345678" className="btn-phone">
+            <a href="tel:+33623136783" className="btn-phone">
               <Phone className="w-5 h-5" />
-              06 12 34 56 78
+              06 23 13 67 83
             </a>
             <Link href="/contact" className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 border border-white/30 text-white font-semibold px-6 py-3 rounded-xl transition-all">
               Nous contacter

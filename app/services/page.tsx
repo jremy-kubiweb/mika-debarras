@@ -76,9 +76,9 @@ export default function ServicesPage() {
               MiKa Débarras intervient pour tous types de débarras dans le Grand Lyon. Devis gratuit, transparent, sans engagement.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-3">
-              <a href="tel:+33612345678" className="btn-phone">
+              <a href="tel:+33623136783" className="btn-phone">
                 <Phone className="w-4 h-4" />
-                06 12 34 56 78
+                06 23 13 67 83
               </a>
               <Link href="/contact" className="btn-secondary">
                 Devis gratuit
@@ -185,9 +185,9 @@ export default function ServicesPage() {
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 tracking-tight">Prêt à démarrer votre débarras ?</h2>
           <p className="text-orange-100/80 text-lg mb-10">Contactez-nous pour un devis gratuit et sans engagement sous 24h.</p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <a href="tel:+33612345678" className="btn-phone">
+            <a href="tel:+33623136783" className="btn-phone">
               <Phone className="w-5 h-5" />
-              06 12 34 56 78
+              06 23 13 67 83
             </a>
             <Link href="/contact" className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 border border-white/30 text-white font-semibold px-6 py-3 rounded-xl transition-all">
               Devis en ligne

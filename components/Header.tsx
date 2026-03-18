@@ -61,11 +61,11 @@ export default function Header() {
           {/* CTA + mobile toggle */}
           <div className="flex items-center gap-2.5">
             <a
-              href="tel:+33612345678"
+              href="tel:+33623136783"
               className="hidden sm:inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-semibold px-4 py-2 rounded-xl text-sm shadow-sm hover:shadow-md hover:shadow-green-600/20 transition-all duration-200"
             >
               <Phone className="w-3.5 h-3.5" />
-              06 12 34 56 78
+              06 23 13 67 83
             </a>
             <Link
               href="/contact"
@@ -104,11 +104,11 @@ export default function Header() {
             ))}
             <div className="mt-3 pt-3 border-t border-gray-100 flex flex-col gap-2.5">
               <a
-                href="tel:+33612345678"
+                href="tel:+33623136783"
                 className="flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white font-bold px-4 py-3 rounded-xl text-sm transition-colors shadow-sm"
               >
                 <Phone className="w-4 h-4" />
-                06 12 34 56 78
+                06 23 13 67 83
               </a>
               <Link
                 href="/contact"

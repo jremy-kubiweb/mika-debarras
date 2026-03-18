@@ -5,7 +5,7 @@ export const SITE = {
   url: "https://www.mika-debarras.fr",
   ogImage: "/og-image.jpg",
   locale: "fr_FR",
-  phone: "06 12 34 56 78",
+  phone: "06 23 13 67 83",
 } as const;
 
 interface BuildMetaOptions {

@@ -38,7 +38,7 @@ export default function VillePage({ params }: Props) {
     name: `MiKa Débarras ${zone.nom}`,
     description: zone.description,
     url: `https://www.mika-debarras.fr/zones-intervention/${zone.slug}`,
-    telephone: "+33612345678",
+    telephone: "+33623136783",
     areaServed: {
       "@type": "City",
       name: zone.nom,
@@ -86,9 +86,9 @@ export default function VillePage({ params }: Props) {
               {zone.description} Devis gratuit sous 24h, intervention rapide, équipe professionnelle et assurée.
             </p>
             <div className="mt-6 flex flex-col sm:flex-row gap-3">
-              <a href="tel:+33612345678" className="btn-phone text-sm">
+              <a href="tel:+33623136783" className="btn-phone text-sm">
                 <Phone className="w-4 h-4" />
-                06 12 34 56 78
+                06 23 13 67 83
               </a>
               <Link href="/contact" className="btn-secondary text-sm">
                 Devis gratuit à {zone.nom}
@@ -266,9 +266,9 @@ export default function VillePage({ params }: Props) {
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-3 flex-shrink-0">
-              <a href="tel:+33612345678" className="btn-phone text-sm">
+              <a href="tel:+33623136783" className="btn-phone text-sm">
                 <Phone className="w-4 h-4" />
-                06 12 34 56 78
+                06 23 13 67 83
               </a>
               <Link href="/contact" className="btn-primary text-sm">
                 Demander un devis
@@ -289,9 +289,9 @@ export default function VillePage({ params }: Props) {
             Contactez MiKa Débarras pour votre débarras à {zone.nom}. Réponse sous 24h, intervention sous 48h.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="tel:+33612345678" className="btn-phone">
+            <a href="tel:+33623136783" className="btn-phone">
               <Phone className="w-5 h-5" />
-              06 12 34 56 78
+              06 23 13 67 83
             </a>
             <Link href="/contact" className="border-2 border-white text-white font-bold px-6 py-3 rounded-xl hover:bg-white/10 transition-colors flex items-center justify-center gap-2">
               Devis en ligne

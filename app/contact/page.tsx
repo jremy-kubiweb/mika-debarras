@@ -43,8 +43,8 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <p className="font-semibold text-gray-900 text-sm">Téléphone</p>
-                      <a href="tel:+33612345678" className="text-brand-600 hover:text-brand-700 text-sm font-medium">
-                        06 12 34 56 78
+                      <a href="tel:+33623136783" className="text-brand-600 hover:text-brand-700 text-sm font-medium">
+                        06 23 13 67 83
                       </a>
                       <p className="text-gray-400 text-xs mt-0.5">Appel & SMS</p>
                     </div>
@@ -87,7 +87,7 @@ export default function ContactPage() {
                 <p className="text-green-700 text-sm mb-4">
                   Pour les urgences (décès, logement à libérer rapidement), appelez-nous directement.
                 </p>
-                <a href="tel:+33612345678" className="btn-phone w-full justify-center text-sm">
+                <a href="tel:+33623136783" className="btn-phone w-full justify-center text-sm">
                   <Phone className="w-4 h-4" />
                   Appel direct
                 </a>

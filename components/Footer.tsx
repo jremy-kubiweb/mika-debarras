@@ -32,11 +32,11 @@ export default function Footer() {
             </div>
             <div className="flex flex-col sm:flex-row gap-3 flex-shrink-0">
               <a
-                href="tel:+33612345678"
+                href="tel:+33623136783"
                 className="inline-flex items-center justify-center gap-2 bg-white text-brand-700 font-bold px-6 py-3 rounded-xl hover:bg-orange-50 transition-colors shadow-md text-sm"
               >
                 <Phone className="w-4 h-4" />
-                06 12 34 56 78
+                06 23 13 67 83
               </a>
               <Link
                 href="/contact"
@@ -130,8 +130,8 @@ export default function Footer() {
               <li className="flex items-start gap-3">
                 <Phone className="w-3.5 h-3.5 text-brand-500 mt-0.5 flex-shrink-0" />
                 <div>
-                  <a href="tel:+33612345678" className="text-gray-300 hover:text-white text-sm transition-colors block font-medium">
-                    06 12 34 56 78
+                  <a href="tel:+33623136783" className="text-gray-300 hover:text-white text-sm transition-colors block font-medium">
+                    06 23 13 67 83
                   </a>
                   <span className="text-gray-600 text-xs">Appel & SMS</span>
                 </div>
