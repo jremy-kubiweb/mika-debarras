@@ -13,10 +13,10 @@ export const IMG = {
     aPropos:      px(2375042,  1400, 700),
     zones:        px(7018400,  1400, 700),
     ville:        px(9998751,  1400, 700),
-    contact:      px(1571460,  1400, 700),
+    contact:      px(6555465,  1400, 700),
   },
 
-  contactSide: px(7534168, 800, 500),
+  contactSide: px(2168227, 800, 500),
 
   services: {
     "vide-maison":                px(2168227, 800, 500),
