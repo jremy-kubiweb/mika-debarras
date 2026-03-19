@@ -2,9 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Phone, Menu, X } from "lucide-react";
+import { Phone, Menu, X, Truck } from "lucide-react";
 
 const navLinks = [
   { href: "/", label: "Accueil" },
@@ -25,15 +24,18 @@ export default function Header() {
         <div className="flex items-center justify-between h-[72px]">
 
           {/* Logo */}
-          <Link href="/" className="flex items-center flex-shrink-0">
-            <Image
-              src="/logo.png"
-              alt="MiKa Débarras Lyon"
-              width={180}
-              height={60}
-              className="h-12 w-auto object-contain"
-              priority
-            />
+          <Link href="/" className="flex items-center gap-3 group flex-shrink-0">
+            <div className="w-10 h-10 gradient-brand rounded-xl flex items-center justify-center shadow-md group-hover:shadow-brand-600/40 group-hover:scale-105 transition-all duration-200">
+              <Truck className="w-5 h-5 text-white" />
+            </div>
+            <div className="flex flex-col leading-none">
+              <span className="text-[17px] font-bold text-gray-950 tracking-tight">
+                MiKa <span className="text-brand-600">Débarras</span>
+              </span>
+              <span className="text-[11px] text-gray-400 font-medium tracking-wide uppercase mt-0.5">
+                Lyon & Grand Lyon
+              </span>
+            </div>
           </Link>
 
           {/* Desktop nav */}
