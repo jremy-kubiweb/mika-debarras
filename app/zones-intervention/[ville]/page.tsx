@@ -102,11 +102,12 @@ export default function VillePage({ params }: Props) {
       {/* Réassurance locale */}
       <section className="bg-white py-10 border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {[
               { icon: Clock, label: "Devis sous 24h", desc: `Réponse rapide pour ${zone.nom}` },
               { icon: Truck, label: "Intervention rapide", desc: "Disponible sous 48h" },
               { icon: Leaf, label: "Éco-responsable", desc: "Tri et recyclage systématiques" },
+              ...(zone.population ? [{ icon: MapPin, label: `${zone.population.toLocaleString("fr-FR")} habitants`, desc: `Commune de ${zone.nom}` }] : []),
             ].map((item) => {
               const Icon = item.icon;
               return (
