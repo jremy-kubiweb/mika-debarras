@@ -43,6 +43,16 @@ export default function VillePage({ params }: Props) {
     address: { "@type": "PostalAddress", addressLocality: zone.nom, postalCode: zone.codePostal, addressCountry: "FR" },
   };
 
+  const breadcrumbData = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Accueil", item: "https://www.mika-debarras.fr" },
+      { "@type": "ListItem", position: 2, name: "Zones d'intervention", item: "https://www.mika-debarras.fr/zones-intervention" },
+      { "@type": "ListItem", position: 3, name: zone.nom, item: `https://www.mika-debarras.fr/zones-intervention/${zone.slug}` },
+    ],
+  };
+
   const faq = [
     {
       q: `MiKa Débarras intervient-il vraiment à ${zone.nom} ?`,
@@ -66,9 +76,21 @@ export default function VillePage({ params }: Props) {
     },
   ];
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faq.map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: { "@type": "Answer", text: item.r },
+    })),
+  };
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbData) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
       {/* ── HERO ── */}
       <section className="relative bg-dark overflow-hidden">

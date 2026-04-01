@@ -61,22 +61,33 @@ const schemaOrg = {
   url: "https://www.mika-debarras.fr",
   telephone: "+33623136783",
   email: "contact@mika-debarras.fr",
+  image: "https://www.mika-debarras.fr/og-image.jpg",
   address: {
     "@type": "PostalAddress",
-    addressLocality: "Lyon",
+    streetAddress: "Irigny",
+    addressLocality: "Irigny",
     addressRegion: "Auvergne-Rhône-Alpes",
     addressCountry: "FR",
-    postalCode: "69000",
+    postalCode: "69540",
   },
   geo: {
     "@type": "GeoCoordinates",
-    latitude: 45.7640,
-    longitude: 4.8357,
+    latitude: 45.6697,
+    longitude: 4.8194,
   },
-  areaServed: {
-    "@type": "AdministrativeArea",
-    name: "Grand Lyon (Rhône 69)",
-  },
+  areaServed: [
+    { "@type": "City", name: "Lyon" },
+    { "@type": "City", name: "Irigny" },
+    { "@type": "City", name: "Villeurbanne" },
+    { "@type": "City", name: "Vénissieux" },
+    { "@type": "City", name: "Oullins" },
+    { "@type": "City", name: "Saint-Genis-Laval" },
+    { "@type": "City", name: "Bron" },
+    { "@type": "AdministrativeArea", name: "Grand Lyon — rayon 40 km" },
+  ],
+  sameAs: [
+    "https://www.google.com/maps?q=mika-debarras",
+  ],
   openingHoursSpecification: [
     {
       "@type": "OpeningHoursSpecification",

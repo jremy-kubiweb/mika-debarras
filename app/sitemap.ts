@@ -48,15 +48,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${BASE_URL}/zones-intervention/${zone.slug}`,
     lastModified: new Date(),
     changeFrequency: "monthly",
-    priority: 0.7,
+    priority: 0.8,
   }));
 
-  const serviceRoutes: MetadataRoute.Sitemap = services.map((service) => ({
-    url: `${BASE_URL}/services#${service.slug}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly",
-    priority: 0.6,
-  }));
-
-  return [...staticRoutes, ...zoneRoutes, ...serviceRoutes];
+  return [...staticRoutes, ...zoneRoutes];
 }
