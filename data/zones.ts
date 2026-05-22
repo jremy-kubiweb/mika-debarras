@@ -508,7 +508,7 @@ export const zones: Zone[] = [
     population: 6144,
     surface: 12.1,
     distanceIrigny: 21.5,
-    voisines: ["meyzieu", "thil", "nievroz", "beynost", "decines-charpieu"],
+    voisines: ["jons", "meyzieu", "thil", "nievroz", "beynost"],
   },
   {
     slug: "cailloux-sur-fontaines",
@@ -589,6 +589,16 @@ export const zones: Zone[] = [
     surface: 10.7,
     distanceIrigny: 23.0,
     voisines: ["saint-maurice-de-beynost", "thil", "la-boisse", "miribel", "tramoyes"],
+  },
+  {
+    slug: "jons",
+    nom: "Jons",
+    codePostal: "69330",
+    description: "Débarras et vide maison professionnels à Jons (69330). MiKa Débarras intervient à Jons pour tous vos besoins : vide cave, vide grenier, succession. Devis gratuit sous 24h.",
+    population: 1647,
+    surface: 7.3,
+    distanceIrigny: 24.7,
+    voisines: ["jonage", "meyzieu", "nievroz", "thil", "beynost"],
   },
   {
     slug: "montanay",
