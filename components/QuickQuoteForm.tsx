@@ -103,7 +103,7 @@ export default function QuickQuoteForm({ source, title, subtitle, layout = "stac
           <label htmlFor={`${uid}-ville`} className="sr-only">Ville d&apos;intervention</label>
           <input id={`${uid}-ville`} type="text" name="ville" required autoComplete="address-level2" value={form.ville} onChange={handleChange} placeholder="Ville *" className={`${fieldClass} text-gray-900`} />
         </div>
-        <div className={inline ? "sm:col-span-2 lg:col-span-5 sm:order-last" : ""}>
+        <div className={inline ? "sm:col-span-2 lg:col-span-5 lg:order-last" : ""}>
           <label htmlFor={`${uid}-commentaire`} className="sr-only">Commentaire (facultatif)</label>
           <textarea id={`${uid}-commentaire`} name="commentaire" rows={inline ? 2 : 3} value={form.commentaire} onChange={handleChange} placeholder="Un commentaire ? (volume, accès, délai…) — facultatif" className={`${fieldClass} text-gray-900 resize-none`} />
         </div>
@@ -118,7 +118,7 @@ export default function QuickQuoteForm({ source, title, subtitle, layout = "stac
         </button>
 
         {error && (
-          <div className={`bg-red-50 border border-red-200 text-red-700 text-sm rounded-xl px-4 py-3 ${inline ? "sm:col-span-2 lg:col-span-5 sm:order-last" : ""}`}>
+          <div className={`bg-red-50 border border-red-200 text-red-700 text-sm rounded-xl px-4 py-3 ${inline ? "sm:col-span-2 lg:col-span-5 lg:order-last" : ""}`}>
             {error}
           </div>
         )}
