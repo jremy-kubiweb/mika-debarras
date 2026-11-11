@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { buildMeta } from "@/lib/metadata";
 import Link from "next/link";
 import Image from "next/image";
+import HeroQuoteForm from "@/components/HeroQuoteForm";
 import { IMG } from "@/lib/images";
 import {
   Award,
@@ -79,7 +80,7 @@ export default function AProposPage() {
           />
         </div>
         <div className="absolute inset-0 bg-dark/65" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center">
           <div className="max-w-2xl">
             <span className="badge mb-5">Notre histoire</span>
             <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight">
@@ -90,6 +91,7 @@ export default function AProposPage() {
               Fondée à Lyon il y a 10 ans, MiKa Débarras est devenue la référence locale du débarras professionnel, humain et éco-responsable.
             </p>
           </div>
+          <HeroQuoteForm />
         </div>
       </section>
 

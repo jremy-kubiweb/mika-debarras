@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
+import HeroQuoteForm from "@/components/HeroQuoteForm";
 import { MapPin, Phone, ArrowRight, CheckCircle2, Clock, Truck, Leaf, Users, Star, Shield, Recycle, MessageCircle, ChevronDown } from "lucide-react";
 import { IMG } from "@/lib/images";
 import { zones, getZoneBySlug, getVoisines } from "@/data/zones";
@@ -98,7 +99,7 @@ export default function VillePage({ params }: Props) {
           <Image src={IMG.heroes.ville} alt="" fill className="object-cover opacity-40" priority />
         </div>
         <div className="absolute inset-0 bg-dark/70" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center">
           <div className="max-w-3xl">
             <div className="flex flex-wrap items-center gap-2 mb-5">
               <span className="badge"><MapPin className="w-3.5 h-3.5" /> {zone.nom} — {zone.codePostal}</span>
@@ -124,6 +125,7 @@ export default function VillePage({ params }: Props) {
               </Link>
             </div>
           </div>
+          <HeroQuoteForm />
         </div>
       </section>
 

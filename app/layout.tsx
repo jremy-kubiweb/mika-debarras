@@ -4,7 +4,6 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import StickyMobileCTA from "@/components/StickyMobileCTA";
-import SiteQuoteSection from "@/components/SiteQuoteSection";
 import { SITE } from "@/lib/metadata";
 import { Analytics } from "@vercel/analytics/next";
 
@@ -132,7 +131,6 @@ export default function RootLayout({
       <body className="flex flex-col min-h-screen pb-[72px] md:pb-0">
         <Header />
         <main className="flex-1">{children}</main>
-        <SiteQuoteSection />
         <Footer />
         <StickyMobileCTA />
         <Analytics />

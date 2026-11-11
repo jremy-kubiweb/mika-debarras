@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { buildMeta } from "@/lib/metadata";
 import Link from "next/link";
 import Image from "next/image";
+import HeroQuoteForm from "@/components/HeroQuoteForm";
 import { IMG } from "@/lib/images";
 import { MapPin, ArrowRight, Phone, CheckCircle2, Users } from "lucide-react";
 import { zones } from "@/data/zones";
@@ -40,7 +41,7 @@ export default function ZonesPage() {
           <Image src={IMG.heroes.zones} alt="" fill className="object-cover opacity-50" priority />
         </div>
         <div className="absolute inset-0 bg-dark/65" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center">
           <div className="max-w-2xl">
             <span className="badge mb-5">
               <MapPin className="w-3.5 h-3.5" /> Couverture géographique
@@ -54,6 +55,7 @@ export default function ZonesPage() {
               MiKa Débarras intervient dans un rayon de 40 km autour d'Irigny dans le Rhône, l'Ain, l'Isère et la Loire.
             </p>
           </div>
+          <HeroQuoteForm />
         </div>
       </section>
 
