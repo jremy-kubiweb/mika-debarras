@@ -2,7 +2,6 @@
 
 import { useId, useState } from "react";
 import { Send, CheckCircle2, Phone, Lock } from "lucide-react";
-import { serviceOptions } from "@/components/ContactForm";
 
 type Props = {
   source: string;
@@ -17,7 +16,7 @@ const fieldClass =
 
 export default function QuickQuoteForm({ source, title, subtitle, layout = "stack", className = "" }: Props) {
   const uid = useId();
-  const [form, setForm] = useState({ nom: "", telephone: "", email: "", service: "", ville: "", commentaire: "" });
+  const [form, setForm] = useState({ nom: "", telephone: "", email: "", ville: "", commentaire: "" });
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -39,7 +38,6 @@ export default function QuickQuoteForm({ source, title, subtitle, layout = "stac
           nom: form.nom,
           telephone: form.telephone,
           email: form.email,
-          service: form.service,
           ville: form.ville,
           message: [form.commentaire.trim(), `Demande de rappel envoyée depuis : ${source}`].filter(Boolean).join("\n\n"),
         }),
@@ -85,7 +83,7 @@ export default function QuickQuoteForm({ source, title, subtitle, layout = "stac
         onSubmit={handleSubmit}
         className={
           inline
-            ? `grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-[repeat(5,minmax(0,1fr))_auto] gap-3 ${title || subtitle ? "mt-4" : ""}`
+            ? `grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[repeat(4,minmax(0,1fr))_auto] gap-3 ${title || subtitle ? "mt-4" : ""}`
             : "mt-5 space-y-3"
         }
       >
@@ -102,19 +100,10 @@ export default function QuickQuoteForm({ source, title, subtitle, layout = "stac
           <input id={`${uid}-email`} type="email" name="email" autoComplete="email" value={form.email} onChange={handleChange} placeholder="Votre e-mail" className={`${fieldClass} text-gray-900`} />
         </div>
         <div>
-          <label htmlFor={`${uid}-service`} className="sr-only">Type de débarras</label>
-          <select id={`${uid}-service`} name="service" required value={form.service} onChange={handleChange} className={`${fieldClass} ${form.service ? "text-gray-900" : "text-gray-400"}`}>
-            <option value="">Type de débarras *</option>
-            {serviceOptions.map((s) => (
-              <option key={s} value={s} className="text-gray-900">{s}</option>
-            ))}
-          </select>
-        </div>
-        <div>
           <label htmlFor={`${uid}-ville`} className="sr-only">Ville d&apos;intervention</label>
           <input id={`${uid}-ville`} type="text" name="ville" required autoComplete="address-level2" value={form.ville} onChange={handleChange} placeholder="Ville *" className={`${fieldClass} text-gray-900`} />
         </div>
-        <div className={inline ? "sm:col-span-2 lg:col-span-3 xl:col-span-6 sm:order-last" : ""}>
+        <div className={inline ? "sm:col-span-2 lg:col-span-5 sm:order-last" : ""}>
           <label htmlFor={`${uid}-commentaire`} className="sr-only">Commentaire (facultatif)</label>
           <textarea id={`${uid}-commentaire`} name="commentaire" rows={inline ? 2 : 3} value={form.commentaire} onChange={handleChange} placeholder="Un commentaire ? (volume, accès, délai…) — facultatif" className={`${fieldClass} text-gray-900 resize-none`} />
         </div>
@@ -122,14 +111,14 @@ export default function QuickQuoteForm({ source, title, subtitle, layout = "stac
         <button
           type="submit"
           disabled={loading}
-          className={`btn-primary justify-center whitespace-nowrap disabled:opacity-60 disabled:cursor-not-allowed ${inline ? "py-3" : "w-full text-base py-4"}`}
+          className={`btn-primary justify-center whitespace-nowrap disabled:opacity-60 disabled:cursor-not-allowed ${inline ? "sm:col-span-2 lg:col-span-1 py-3" : "w-full text-base py-4"}`}
         >
           <Send className="w-5 h-5" />
           {loading ? "Envoi…" : "Être rappelé gratuitement"}
         </button>
 
         {error && (
-          <div className={`bg-red-50 border border-red-200 text-red-700 text-sm rounded-xl px-4 py-3 ${inline ? "sm:col-span-2 lg:col-span-3 xl:col-span-6 sm:order-last" : ""}`}>
+          <div className={`bg-red-50 border border-red-200 text-red-700 text-sm rounded-xl px-4 py-3 ${inline ? "sm:col-span-2 lg:col-span-5 sm:order-last" : ""}`}>
             {error}
           </div>
         )}

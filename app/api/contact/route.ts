@@ -12,14 +12,14 @@ export async function POST(req: Request) {
     const body = await req.json();
     const { nom, email, telephone, service, ville, message, urgence } = body;
 
-    if (!nom || !telephone || !service || !ville) {
+    if (!nom || !telephone || !ville) {
       return NextResponse.json(
         { error: "Champs obligatoires manquants." },
         { status: 400 }
       );
     }
 
-    const sujet = `${urgence ? "🚨 URGENT — " : ""}Demande de devis — ${service} à ${ville}`;
+    const sujet = `${urgence ? "🚨 URGENT — " : ""}Demande de devis — ${service ? `${service} à ` : ""}${ville}`;
 
     await resend.emails.send({
       from: "MiKa Débarras <onboarding@resend.dev>",
@@ -49,7 +49,7 @@ export async function POST(req: Request) {
               </tr>
               <tr>
                 <td style="padding:10px 0;border-bottom:1px solid #f3f4f6;color:#6b7280;font-weight:600;">Service</td>
-                <td style="padding:10px 0;border-bottom:1px solid #f3f4f6;color:#111827;">${service}</td>
+                <td style="padding:10px 0;border-bottom:1px solid #f3f4f6;color:#111827;">${service || "—"}</td>
               </tr>
               <tr>
                 <td style="padding:10px 0;border-bottom:1px solid #f3f4f6;color:#6b7280;font-weight:600;">Ville</td>
