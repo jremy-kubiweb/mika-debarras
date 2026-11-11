@@ -6,6 +6,7 @@ export const SITE = {
   ogImage: "/og-image.jpg",
   locale: "fr_FR",
   phone: "06 23 13 67 83",
+  whatsapp: "33623136783",
 } as const;
 
 interface BuildMetaOptions {

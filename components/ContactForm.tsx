@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Send, CheckCircle2, ArrowRight } from "lucide-react";
+import { trackEvent } from "@/lib/track";
 
 export const serviceOptions = [
   "Vide Maison",
@@ -52,6 +53,7 @@ export default function ContactForm() {
       const data = text ? JSON.parse(text) : {};
       if (!res.ok) throw new Error(data.error || "Erreur lors de l'envoi.");
       setSubmitted(true);
+      trackEvent("generate_lead", { formulaire: "Page contact — formulaire complet", page: window.location.pathname });
     } catch (err: unknown) {
       setError(err instanceof Error ? err.message : "Erreur lors de l'envoi. Veuillez réessayer.");
     } finally {

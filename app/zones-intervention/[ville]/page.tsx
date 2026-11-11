@@ -8,6 +8,7 @@ import { IMG } from "@/lib/images";
 import { zones, getZoneBySlug, getVoisines } from "@/data/zones";
 import { services } from "@/data/services";
 import { buildMeta } from "@/lib/metadata";
+import { zonesContenu } from "@/data/zonesContenu";
 
 interface Props {
   params: { ville: string };
@@ -21,7 +22,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const zone = getZoneBySlug(params.ville);
   if (!zone) return {};
   return buildMeta({
-    title: `Débarras ${zone.nom} — Vide Maison & Cave | MiKa Débarras`,
+    title: `Débarras ${zone.nom} (${zone.codePostal}) — Vide Maison & Cave`,
     description: `MiKa Débarras intervient à ${zone.nom} (${zone.codePostal}) pour tous vos débarras : vide maison, vide cave, succession. Devis gratuit sous 24h, intervention sous 48h.`,
     path: `/zones-intervention/${zone.slug}`,
   });
@@ -32,6 +33,7 @@ export default function VillePage({ params }: Props) {
   if (!zone) notFound();
 
   const voisines = getVoisines(zone);
+  const contenu = zonesContenu[zone.slug];
 
   const structuredData = {
     "@context": "https://schema.org",
@@ -41,7 +43,7 @@ export default function VillePage({ params }: Props) {
     url: `https://www.mika-debarras.fr/zones-intervention/${zone.slug}`,
     telephone: "+33623136783",
     areaServed: { "@type": "City", name: zone.nom, postalCode: zone.codePostal },
-    address: { "@type": "PostalAddress", addressLocality: zone.nom, postalCode: zone.codePostal, addressCountry: "FR" },
+    address: { "@type": "PostalAddress", addressLocality: "Irigny", postalCode: "69540", addressRegion: "Auvergne-Rhône-Alpes", addressCountry: "FR" },
   };
 
   const breadcrumbData = {
@@ -55,6 +57,7 @@ export default function VillePage({ params }: Props) {
   };
 
   const faq = [
+    ...(contenu?.faq ?? []),
     {
       q: `MiKa Débarras intervient-il vraiment à ${zone.nom} ?`,
       r: `Oui, ${zone.nom} fait partie de notre zone d'intervention principale. Nous nous déplaçons à ${zone.nom} (${zone.codePostal}) pour tous types de débarras : vide maison, vide cave, vide grenier, succession ou débarras d'appartement.`,
@@ -158,6 +161,19 @@ export default function VillePage({ params }: Props) {
               <h2 className="text-2xl font-bold text-gray-900 mb-4">
                 Notre service de débarras à {zone.nom}
               </h2>
+              {contenu ? (
+                <>
+                  {contenu.intro.map((p) => (
+                    <p key={p.slice(0, 40)} className="text-gray-600 leading-relaxed mb-4">{p}</p>
+                  ))}
+                  {contenu.quartiers && (
+                    <p className="text-gray-600 leading-relaxed mb-6">
+                      <strong className="text-gray-900">Quartiers desservis :</strong> {contenu.quartiers.join(", ")}.
+                    </p>
+                  )}
+                </>
+              ) : (
+                <>
               <p className="text-gray-600 leading-relaxed mb-4">
                 Vous avez besoin de vider une maison, un appartement, une cave ou un grenier à {zone.nom} ? MiKa Débarras est l'entreprise de débarras locale qu'il vous faut.
               </p>
@@ -167,6 +183,15 @@ export default function VillePage({ params }: Props) {
               <p className="text-gray-600 leading-relaxed mb-6">
                 Chaque intervention est unique. Nous adaptons notre méthode à votre situation : succession, déménagement, départ en maison de retraite, logement insalubre ou simple accumulation d'objets.
               </p>
+                  {zone.distanceIrigny !== undefined && (
+                    <p className="text-gray-600 leading-relaxed mb-6">
+                      {zone.nom} se trouve à environ {zone.distanceIrigny} km de notre base d&apos;Irigny
+                      {zone.population ? `, pour une commune de ${zone.population.toLocaleString("fr-FR")} habitants` : ""}. Nous y intervenons en général sous 48h
+                      {voisines.length > 0 ? `, ainsi qu'à ${voisines.slice(0, 3).map((v) => v.nom).join(", ")}` : ""}.
+                    </p>
+                  )}
+                </>
+              )}
               <div className="space-y-2">
                 {[
                   `Connaissance du tissu local à ${zone.nom}`,

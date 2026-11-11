@@ -1,6 +1,8 @@
 import type { MetadataRoute } from "next";
 import { zones } from "@/data/zones";
 import { services } from "@/data/services";
+import { servicesDetails } from "@/data/servicesDetails";
+import { guides } from "@/data/guides";
 
 const BASE_URL = "https://www.mika-debarras.fr";
 
@@ -51,5 +53,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  return [...staticRoutes, ...zoneRoutes];
+  const serviceRoutes: MetadataRoute.Sitemap = services
+    .filter((s) => servicesDetails[s.slug])
+    .map((s) => ({
+      url: `${BASE_URL}/services/${s.slug}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    }));
+
+  const guideRoutes: MetadataRoute.Sitemap = [
+    { url: `${BASE_URL}/guides`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.7 },
+    ...guides.map((g) => ({
+      url: `${BASE_URL}/guides/${g.slug}`,
+      lastModified: new Date(g.date),
+      changeFrequency: "yearly" as const,
+      priority: 0.6,
+    })),
+  ];
+
+  return [...staticRoutes, ...serviceRoutes, ...zoneRoutes, ...guideRoutes];
 }

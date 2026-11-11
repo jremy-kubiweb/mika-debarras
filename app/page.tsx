@@ -235,7 +235,7 @@ export default function HomePage() {
               return (
                 <Link
                   key={s.slug}
-                  href={`/services#${s.slug}`}
+                  href={`/services/${s.slug}`}
                   className="flex items-center gap-1.5 px-3 py-1.5 bg-gray-50 border border-gray-200 rounded-full text-sm text-gray-600 hover:bg-brand-50 hover:border-brand-300 hover:text-brand-700 transition-all font-medium"
                 >
                   <Icon className="w-3.5 h-3.5" />
@@ -314,7 +314,7 @@ export default function HomePage() {
               return (
                 <Link
                   key={service.slug}
-                  href={`/services#${service.slug}`}
+                  href={`/services/${service.slug}`}
                   className="bg-white rounded-2xl border border-gray-100 shadow-sm group hover:-translate-y-1 hover:shadow-lg transition-all duration-200 overflow-hidden flex flex-col"
                 >
                   <div className="relative h-44 w-full overflow-hidden">

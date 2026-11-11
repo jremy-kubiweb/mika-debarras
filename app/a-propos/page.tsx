@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = buildMeta({
-  title: "À Propos de MiKa Débarras — Entreprise de Débarras à Lyon",
+  title: "À propos — Entreprise de débarras à Lyon",
   description:
     "10 ans d'expérience, plus de 1 200 interventions. Découvrez l'équipe MiKa Débarras : professionnels du débarras à Lyon, engagés pour un service rapide, humain et éco-responsable.",
   path: "/a-propos",

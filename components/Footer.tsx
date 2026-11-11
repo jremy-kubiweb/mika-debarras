@@ -2,12 +2,12 @@ import Link from "next/link";
 import { Phone, Mail, MapPin, Clock, Truck, Facebook, Instagram } from "lucide-react";
 
 const services = [
-  { href: "/services#vide-maison", label: "Vide Maison" },
-  { href: "/services#vide-appartement", label: "Vide Appartement" },
-  { href: "/services#vide-cave", label: "Vide Cave" },
-  { href: "/services#vide-grenier-professionnel", label: "Vide Grenier" },
-  { href: "/services#succession-heritage", label: "Succession & Héritage" },
-  { href: "/services#debarras-bureau", label: "Débarras Bureau" },
+  { href: "/services/vide-maison", label: "Vide Maison" },
+  { href: "/services/vide-appartement", label: "Vide Appartement" },
+  { href: "/services/vide-cave", label: "Vide Cave" },
+  { href: "/services/vide-grenier-professionnel", label: "Vide Grenier" },
+  { href: "/services/succession-heritage", label: "Succession & Héritage" },
+  { href: "/services/debarras-bureau", label: "Débarras Bureau" },
 ];
 
 const zones = [

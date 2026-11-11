@@ -107,8 +107,13 @@ export default function ServicesPage() {
                     <div className="w-14 h-14 gradient-brand rounded-2xl flex items-center justify-center mb-5 shadow-lg">
                       <IconComp className="w-7 h-7 text-white" />
                     </div>
-                    <h2 className="text-2xl font-bold text-gray-900 mb-3">{service.titre}</h2>
-                    <p className="text-gray-600 leading-relaxed mb-4">{service.descriptionLongue}</p>
+                    <h2 className="text-2xl font-bold text-gray-900 mb-3">
+                      <Link href={`/services/${service.slug}`} className="hover:text-brand-600 transition-colors">{service.titre}</Link>
+                    </h2>
+                    <p className="text-gray-600 leading-relaxed mb-3">{service.descriptionLongue}</p>
+                    <Link href={`/services/${service.slug}`} className="inline-flex items-center gap-1 text-brand-600 font-semibold text-sm mb-4 hover:gap-2 transition-all">
+                      En savoir plus : {service.titre} <ArrowRight className="w-4 h-4" />
+                    </Link>
                     <div className="flex items-center justify-between pt-4 border-t border-gray-100">
                       <span className="text-brand-600 font-semibold">{service.prix}</span>
                       <Link href="#devis" className="btn-primary text-sm py-2">

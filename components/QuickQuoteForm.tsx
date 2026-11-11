@@ -2,6 +2,7 @@
 
 import { useId, useState } from "react";
 import { Send, CheckCircle2, Phone, Lock } from "lucide-react";
+import { trackEvent } from "@/lib/track";
 
 type Props = {
   source: string;
@@ -46,6 +47,7 @@ export default function QuickQuoteForm({ source, title, subtitle, layout = "stac
       const data = text ? JSON.parse(text) : {};
       if (!res.ok) throw new Error(data.error || "Erreur lors de l'envoi.");
       setSubmitted(true);
+      trackEvent("generate_lead", { formulaire: source, page: window.location.pathname });
     } catch (err: unknown) {
       setError(err instanceof Error ? err.message : "Erreur lors de l'envoi. Veuillez réessayer.");
     } finally {

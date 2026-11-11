@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import StickyMobileCTA from "@/components/StickyMobileCTA";
+import Tracking from "@/components/Tracking";
 import { SITE } from "@/lib/metadata";
 import { Analytics } from "@vercel/analytics/next";
 
@@ -133,6 +134,7 @@ export default function RootLayout({
         <main className="flex-1">{children}</main>
         <Footer />
         <StickyMobileCTA />
+        <Tracking />
         <Analytics />
       </body>
     </html>
