@@ -17,7 +17,7 @@ const fieldClass =
 
 export default function QuickQuoteForm({ source, title, subtitle, layout = "stack", className = "" }: Props) {
   const uid = useId();
-  const [form, setForm] = useState({ nom: "", telephone: "", service: "", ville: "" });
+  const [form, setForm] = useState({ nom: "", telephone: "", email: "", service: "", ville: "" });
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -78,7 +78,7 @@ export default function QuickQuoteForm({ source, title, subtitle, layout = "stac
         onSubmit={handleSubmit}
         className={
           inline
-            ? `grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_1fr_1fr_auto] gap-3 ${title || subtitle ? "mt-4" : ""}`
+            ? `grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-[repeat(5,minmax(0,1fr))_auto] gap-3 ${title || subtitle ? "mt-4" : ""}`
             : "mt-5 space-y-3"
         }
       >
@@ -89,6 +89,10 @@ export default function QuickQuoteForm({ source, title, subtitle, layout = "stac
         <div>
           <label htmlFor={`${uid}-tel`} className="sr-only">Téléphone</label>
           <input id={`${uid}-tel`} type="tel" name="telephone" required autoComplete="tel" value={form.telephone} onChange={handleChange} placeholder="Votre téléphone *" className={`${fieldClass} text-gray-900`} />
+        </div>
+        <div>
+          <label htmlFor={`${uid}-email`} className="sr-only">Adresse e-mail</label>
+          <input id={`${uid}-email`} type="email" name="email" autoComplete="email" value={form.email} onChange={handleChange} placeholder="Votre e-mail" className={`${fieldClass} text-gray-900`} />
         </div>
         <div>
           <label htmlFor={`${uid}-service`} className="sr-only">Type de débarras</label>
@@ -107,14 +111,14 @@ export default function QuickQuoteForm({ source, title, subtitle, layout = "stac
         <button
           type="submit"
           disabled={loading}
-          className={`btn-primary justify-center whitespace-nowrap disabled:opacity-60 disabled:cursor-not-allowed ${inline ? "sm:col-span-2 lg:col-span-1 py-3" : "w-full text-base py-4"}`}
+          className={`btn-primary justify-center whitespace-nowrap disabled:opacity-60 disabled:cursor-not-allowed ${inline ? "py-3" : "w-full text-base py-4"}`}
         >
           <Send className="w-5 h-5" />
           {loading ? "Envoi…" : "Être rappelé gratuitement"}
         </button>
 
         {error && (
-          <div className={`bg-red-50 border border-red-200 text-red-700 text-sm rounded-xl px-4 py-3 ${inline ? "sm:col-span-2 lg:col-span-5" : ""}`}>
+          <div className={`bg-red-50 border border-red-200 text-red-700 text-sm rounded-xl px-4 py-3 ${inline ? "sm:col-span-2 lg:col-span-3 xl:col-span-6" : ""}`}>
             {error}
           </div>
         )}
