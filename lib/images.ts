@@ -18,6 +18,21 @@ export const IMG = {
 
   contactSide: px(2168227, 800, 500),
 
+  humains: {
+    hero:       px(7464393, 1600, 900),
+    equipe:     px(7464727,  800, 800),
+    chargement: px(7464403,  900, 1100),
+    escalier:   px(7464732,  600, 450),
+    diable:     px(6169668,  600, 450),
+    camion:     px(6169056, 1600, 700),
+    avatars: [
+      px(7464711, 120, 120),
+      px(7464728, 120, 120),
+      px(7464405, 120, 120),
+      px(7464724, 120, 120),
+    ],
+  },
+
   services: {
     "vide-maison":                px(2168227, 800, 500),
     "vide-appartement":           px(6555465, 800, 500),

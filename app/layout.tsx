@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import StickyMobileCTA from "@/components/StickyMobileCTA";
 import { SITE } from "@/lib/metadata";
 import { Analytics } from "@vercel/analytics/next";
 
@@ -127,10 +128,11 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaOrg) }}
         />
       </head>
-      <body className="flex flex-col min-h-screen">
+      <body className="flex flex-col min-h-screen pb-[72px] md:pb-0">
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
+        <StickyMobileCTA />
         <Analytics />
       </body>
     </html>

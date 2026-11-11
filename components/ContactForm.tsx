@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { Send, CheckCircle2, ArrowRight } from "lucide-react";
 
-const serviceOptions = [
+export const serviceOptions = [
   "Vide Maison",
   "Vide Appartement",
   "Vide Cave",

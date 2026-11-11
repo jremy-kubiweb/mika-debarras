@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { IMG } from "@/lib/images";
 import ImageCarousel from "@/components/ImageCarousel";
+import QuickQuoteForm from "@/components/QuickQuoteForm";
 import {
   Phone,
   Clock,
@@ -24,7 +25,6 @@ import {
   Briefcase,
   MapPin,
   Users,
-  TrendingUp,
   Award,
 } from "lucide-react";
 import { services } from "@/data/services";
@@ -132,9 +132,9 @@ export default function HomePage() {
       {/* ── HERO SPLIT ── */}
       <section className="relative bg-dark overflow-hidden min-h-[88vh] flex items-center">
         <div className="absolute inset-0">
-          <Image src={IMG.heroes.accueil} alt="" fill className="object-cover opacity-30" priority />
+          <Image src={IMG.humains.hero} alt="" fill sizes="100vw" className="object-cover opacity-50" priority />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-dark via-dark/90 to-dark/50" />
+        <div className="absolute inset-0 bg-gradient-to-r from-dark via-dark/85 to-dark/40" />
 
         <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -169,10 +169,19 @@ export default function HomePage() {
                 <p className="text-gray-500 text-xs mt-2 ml-1">Lun–Ven 8h–19h · Sam 9h–17h</p>
               </div>
 
-              <div className="mt-5">
-                <Link href="/contact" className="inline-flex items-center gap-2 text-brand-400 hover:text-brand-300 font-semibold transition-colors">
-                  Ou remplir le formulaire de devis <ArrowRight className="w-4 h-4" />
-                </Link>
+              {/* Équipe — visages */}
+              <div className="mt-8 flex items-center gap-4">
+                <div className="flex -space-x-3">
+                  {IMG.humains.avatars.map((src, i) => (
+                    <div key={src} className="relative w-11 h-11 rounded-full overflow-hidden ring-2 ring-dark">
+                      <Image src={src} alt={`Membre de l'équipe MiKa Débarras ${i + 1}`} fill sizes="44px" className="object-cover" />
+                    </div>
+                  ))}
+                </div>
+                <p className="text-sm text-gray-300 leading-snug">
+                  <strong className="text-white">Une équipe locale, à votre écoute.</strong><br />
+                  On se déplace chez vous pour le devis.
+                </p>
               </div>
 
               {/* Trust signals */}
@@ -190,52 +199,26 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Colonne droite — carte stats */}
-            <div className="hidden lg:flex flex-col gap-4">
-              {/* Stats card */}
-              <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-7">
-                <p className="text-gray-400 text-xs font-semibold uppercase tracking-widest mb-5">En chiffres</p>
-                <div className="grid grid-cols-2 gap-5">
-                  {stats.map(({ value, label, icon: Icon }) => (
-                    <div key={label} className="flex items-start gap-3">
-                      <div className="w-9 h-9 gradient-brand rounded-xl flex items-center justify-center flex-shrink-0 shadow-sm">
-                        <Icon className="w-4 h-4 text-white" />
-                      </div>
-                      <div>
-                        <p className="text-2xl font-bold text-white">{value}</p>
-                        <p className="text-gray-400 text-xs mt-0.5">{label}</p>
-                      </div>
-                    </div>
+            {/* Colonne droite — formulaire de devis */}
+            <div id="devis" className="scroll-mt-28 flex flex-col gap-4">
+              <div className="self-start inline-flex items-center gap-2 bg-green-500/15 border border-green-400/30 text-green-300 text-xs font-semibold px-3 py-1.5 rounded-full">
+                <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" /> Disponible cette semaine — intervention sous 48h
+              </div>
+              <QuickQuoteForm
+                source="Accueil — formulaire en haut de page"
+                title="Votre devis gratuit en 2 minutes"
+                subtitle="Laissez vos coordonnées : un membre de l'équipe vous rappelle sous 24h."
+              />
+              <div className="flex items-center gap-3 text-sm text-gray-300">
+                <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center flex-shrink-0">
+                  <span className="text-blue-500 font-black">G</span>
+                </div>
+                <div className="flex items-center gap-0.5">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <Star key={i} className="w-4 h-4 text-yellow-400 fill-yellow-400" />
                   ))}
                 </div>
-              </div>
-
-              {/* Google rating card */}
-              <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-5 flex items-center gap-4">
-                <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center flex-shrink-0 shadow-sm">
-                  <span className="text-blue-500 font-black text-lg">G</span>
-                </div>
-                <div className="flex-1">
-                  <div className="flex items-center gap-1 mb-1">
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <Star key={i} className="w-4 h-4 text-yellow-400 fill-yellow-400" />
-                    ))}
-                    <span className="text-white font-bold text-sm ml-1">4.9</span>
-                  </div>
-                  <p className="text-gray-400 text-xs">Note moyenne · 450+ avis Google</p>
-                </div>
-                <TrendingUp className="w-5 h-5 text-green-400" />
-              </div>
-
-              {/* Urgence */}
-              <div className="gradient-brand rounded-3xl p-5 flex items-center gap-4">
-                <div className="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <Truck className="w-5 h-5 text-white" />
-                </div>
-                <div>
-                  <p className="text-white font-bold">Disponible cette semaine</p>
-                  <p className="text-orange-100 text-sm">Intervention planifiable sous 48h dans tout le Grand Lyon</p>
-                </div>
+                <span><strong className="text-white">4.9</strong> · 450+ avis Google</span>
               </div>
             </div>
           </div>
@@ -260,6 +243,54 @@ export default function HomePage() {
                 </Link>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* ── ÉQUIPE HUMAINE ── */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <div className="grid grid-cols-2 grid-rows-2 gap-4 h-[420px] sm:h-[520px]">
+              <div className="relative row-span-2 rounded-3xl overflow-hidden">
+                <Image src={IMG.humains.chargement} alt="L'équipe MiKa Débarras charge un canapé dans le camion" fill sizes="(max-width: 1024px) 50vw, 25vw" className="object-cover" />
+              </div>
+              <div className="relative rounded-3xl overflow-hidden">
+                <Image src={IMG.humains.escalier} alt="Déménageur portant des cartons dans un escalier" fill sizes="(max-width: 1024px) 50vw, 25vw" className="object-cover" />
+              </div>
+              <div className="relative rounded-3xl overflow-hidden">
+                <Image src={IMG.humains.diable} alt="Évacuation de cartons au diable vers le camion" fill sizes="(max-width: 1024px) 50vw, 25vw" className="object-cover" />
+              </div>
+            </div>
+
+            <div>
+              <span className="badge mb-4"><Users className="w-3.5 h-3.5" /> Une équipe à taille humaine</span>
+              <h2 className="section-title">De vraies personnes,<br />pas une plateforme</h2>
+              <p className="mt-5 text-gray-600 text-lg leading-relaxed">
+                Derrière chaque débarras, il y a une équipe lyonnaise qui vient chez vous, vous écoute et prend soin
+                de vos affaires. Vider la maison d&apos;un proche ou un appartement chargé de souvenirs n&apos;est jamais anodin :
+                on intervient avec respect, patience et discrétion.
+              </p>
+              <ul className="mt-6 space-y-3">
+                {[
+                  "Un seul interlocuteur, du devis jusqu'au dernier carton",
+                  "On met de côté papiers, photos et objets de valeur retrouvés",
+                  "Une équipe formée, assurée et ponctuelle",
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-gray-700">
+                    <Heart className="w-5 h-5 text-brand-500 flex-shrink-0 mt-0.5" /> {item}
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <a href="#devis" className="btn-primary">
+                  Demander mon devis gratuit <ArrowRight className="w-5 h-5" />
+                </a>
+                <a href="tel:+33623136783" className="btn-secondary">
+                  <Phone className="w-5 h-5 text-green-600" /> 06 23 13 67 83
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -389,6 +420,21 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ── CTA FORMULAIRE INTERMÉDIAIRE ── */}
+      <section className="relative py-16 bg-dark overflow-hidden">
+        <div className="absolute inset-0">
+          <Image src={IMG.humains.camion} alt="" fill sizes="100vw" className="object-cover opacity-25" />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-r from-dark via-dark/80 to-dark/60" />
+        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-white">Envie du même résultat chez vous ?</h2>
+            <p className="mt-3 text-gray-300 text-lg">Laissez vos coordonnées, on vous rappelle sous 24h pour fixer la visite gratuite.</p>
+          </div>
+          <QuickQuoteForm source="Accueil — formulaire après les réalisations" layout="inline" />
+        </div>
+      </section>
+
       {/* ── PROCESSUS ── */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -421,9 +467,12 @@ export default function HomePage() {
               );
             })}
           </div>
-          <div className="text-center mt-10">
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+            <a href="#devis" className="btn-primary text-base">
+              Démarrer avec un devis gratuit <ArrowRight className="w-5 h-5" />
+            </a>
             <a href="tel:+33623136783" className="btn-phone text-base">
-              <Phone className="w-5 h-5" /> Appelez pour démarrer — 06 23 13 67 83
+              <Phone className="w-5 h-5" /> 06 23 13 67 83
             </a>
           </div>
         </div>
@@ -478,7 +527,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="relative rounded-3xl overflow-hidden aspect-square bg-gray-100 order-last lg:order-first">
               <Image
-                src={IMG.team}
+                src={IMG.humains.equipe}
                 alt="Équipe MiKa Débarras — professionnels à Lyon"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
@@ -565,8 +614,8 @@ export default function HomePage() {
       {/* ── CTA FINAL ── */}
       <section className="py-20 gradient-brand relative overflow-hidden">
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "radial-gradient(circle at 1px 1px, white 1px, transparent 0)", backgroundSize: "32px 32px" }} />
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
             <div>
               <h2 className="text-3xl md:text-4xl font-extrabold text-white leading-tight">
                 Prêt à libérer<br />de l&apos;espace ?
@@ -579,19 +628,17 @@ export default function HomePage() {
               </p>
             </div>
             <div className="flex flex-col gap-4">
+              <QuickQuoteForm
+                source="Accueil — formulaire en bas de page"
+                title="On vous rappelle gratuitement"
+                subtitle="Réponse sous 24h, sans engagement."
+              />
               <a
                 href="tel:+33623136783"
-                className="flex items-center justify-center gap-3 bg-white text-gray-900 font-bold text-lg px-7 py-5 rounded-2xl shadow-xl hover:bg-gray-50 transition-all hover:scale-[1.02]"
+                className="flex items-center justify-center gap-2 text-white font-semibold hover:text-orange-100 transition-colors"
               >
-                <Phone className="w-6 h-6 text-green-600" />
-                06 23 13 67 83
+                <Phone className="w-5 h-5" /> Ou appelez directement le 06 23 13 67 83
               </a>
-              <Link
-                href="/contact"
-                className="flex items-center justify-center gap-2 border-2 border-white/60 text-white font-semibold px-7 py-4 rounded-2xl hover:bg-white/10 transition-all"
-              >
-                Formulaire de devis en ligne <ArrowRight className="w-5 h-5" />
-              </Link>
             </div>
           </div>
         </div>
