@@ -17,12 +17,12 @@ const fieldClass =
 
 export default function QuickQuoteForm({ source, title, subtitle, layout = "stack", className = "" }: Props) {
   const uid = useId();
-  const [form, setForm] = useState({ nom: "", telephone: "", email: "", service: "", ville: "" });
+  const [form, setForm] = useState({ nom: "", telephone: "", email: "", service: "", ville: "", commentaire: "" });
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
   };
@@ -35,7 +35,14 @@ export default function QuickQuoteForm({ source, title, subtitle, layout = "stac
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, message: `Demande de rappel envoyée depuis : ${source}` }),
+        body: JSON.stringify({
+          nom: form.nom,
+          telephone: form.telephone,
+          email: form.email,
+          service: form.service,
+          ville: form.ville,
+          message: [form.commentaire.trim(), `Demande de rappel envoyée depuis : ${source}`].filter(Boolean).join("\n\n"),
+        }),
       });
       const text = await res.text();
       const data = text ? JSON.parse(text) : {};
@@ -107,6 +114,10 @@ export default function QuickQuoteForm({ source, title, subtitle, layout = "stac
           <label htmlFor={`${uid}-ville`} className="sr-only">Ville d&apos;intervention</label>
           <input id={`${uid}-ville`} type="text" name="ville" required autoComplete="address-level2" value={form.ville} onChange={handleChange} placeholder="Ville *" className={`${fieldClass} text-gray-900`} />
         </div>
+        <div className={inline ? "sm:col-span-2 lg:col-span-3 xl:col-span-6 sm:order-last" : ""}>
+          <label htmlFor={`${uid}-commentaire`} className="sr-only">Commentaire (facultatif)</label>
+          <textarea id={`${uid}-commentaire`} name="commentaire" rows={inline ? 2 : 3} value={form.commentaire} onChange={handleChange} placeholder="Un commentaire ? (volume, accès, délai…) — facultatif" className={`${fieldClass} text-gray-900 resize-none`} />
+        </div>
 
         <button
           type="submit"
@@ -118,7 +129,7 @@ export default function QuickQuoteForm({ source, title, subtitle, layout = "stac
         </button>
 
         {error && (
-          <div className={`bg-red-50 border border-red-200 text-red-700 text-sm rounded-xl px-4 py-3 ${inline ? "sm:col-span-2 lg:col-span-3 xl:col-span-6" : ""}`}>
+          <div className={`bg-red-50 border border-red-200 text-red-700 text-sm rounded-xl px-4 py-3 ${inline ? "sm:col-span-2 lg:col-span-3 xl:col-span-6 sm:order-last" : ""}`}>
             {error}
           </div>
         )}
