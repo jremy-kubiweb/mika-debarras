@@ -119,7 +119,7 @@ export default function VillePage({ params }: Props) {
               <a href="tel:+33623136783" className="btn-phone">
                 <Phone className="w-4 h-4" /> 06 23 13 67 83
               </a>
-              <Link href="/contact" className="btn-secondary">
+              <Link href="#devis" className="btn-secondary">
                 Devis gratuit à {zone.nom} <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
@@ -202,7 +202,7 @@ export default function VillePage({ params }: Props) {
                       {service.titre} à {zone.nom}
                     </h3>
                     <p className="text-gray-500 text-sm leading-relaxed mb-3">{service.description}</p>
-                    <Link href="/contact" className="flex items-center gap-1 text-brand-600 text-sm font-semibold hover:gap-2 transition-all">
+                    <Link href="#devis" className="flex items-center gap-1 text-brand-600 text-sm font-semibold hover:gap-2 transition-all">
                       Demander un devis <ArrowRight className="w-3.5 h-3.5" />
                     </Link>
                   </div>
@@ -251,7 +251,7 @@ export default function VillePage({ params }: Props) {
               <a href="tel:+33623136783" className="flex items-center gap-2 bg-white text-gray-900 font-bold px-5 py-3 rounded-xl hover:bg-gray-50 transition-colors shadow-sm">
                 <Phone className="w-4 h-4 text-green-600" /> 06 23 13 67 83
               </a>
-              <Link href="/contact" className="flex items-center gap-2 border-2 border-white text-white font-bold px-5 py-3 rounded-xl hover:bg-white/10 transition-colors justify-center">
+              <Link href="#devis" className="flex items-center gap-2 border-2 border-white text-white font-bold px-5 py-3 rounded-xl hover:bg-white/10 transition-colors justify-center">
                 Devis en ligne <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
@@ -378,7 +378,7 @@ export default function VillePage({ params }: Props) {
             <a href="tel:+33623136783" className="btn-phone text-base">
               <Phone className="w-5 h-5" /> 06 23 13 67 83
             </a>
-            <Link href="/contact" className="btn-primary text-base">
+            <Link href="#devis" className="btn-primary text-base">
               Remplir le formulaire <ArrowRight className="w-5 h-5" />
             </Link>
           </div>

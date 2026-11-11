@@ -183,7 +183,7 @@ export default function ZonesPage() {
                 <Phone className="w-4 h-4" />
                 06 23 13 67 83
               </a>
-              <Link href="/contact" className="btn-secondary text-sm justify-center">
+              <Link href="#devis" className="btn-secondary text-sm justify-center">
                 Devis gratuit <ArrowRight className="w-4 h-4" />
               </Link>
             </div>

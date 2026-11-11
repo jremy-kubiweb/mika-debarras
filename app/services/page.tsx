@@ -80,7 +80,7 @@ export default function ServicesPage() {
                 <Phone className="w-4 h-4" />
                 06 23 13 67 83
               </a>
-              <Link href="/contact" className="btn-secondary">
+              <Link href="#devis" className="btn-secondary">
                 Devis gratuit
                 <ArrowRight className="w-4 h-4" />
               </Link>
@@ -109,7 +109,7 @@ export default function ServicesPage() {
                     <p className="text-gray-600 leading-relaxed mb-4">{service.descriptionLongue}</p>
                     <div className="flex items-center justify-between pt-4 border-t border-gray-100">
                       <span className="text-brand-600 font-semibold">{service.prix}</span>
-                      <Link href="/contact" className="btn-primary text-sm py-2">
+                      <Link href="#devis" className="btn-primary text-sm py-2">
                         Demander un devis
                         <ArrowRight className="w-4 h-4" />
                       </Link>
@@ -189,7 +189,7 @@ export default function ServicesPage() {
               <Phone className="w-5 h-5" />
               06 23 13 67 83
             </a>
-            <Link href="/contact" className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 border border-white/30 text-white font-semibold px-6 py-3 rounded-xl transition-all">
+            <Link href="#devis" className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 border border-white/30 text-white font-semibold px-6 py-3 rounded-xl transition-all">
               Devis en ligne
               <ArrowRight className="w-5 h-5" />
             </Link>
