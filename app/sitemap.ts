@@ -3,6 +3,7 @@ import { zones } from "@/data/zones";
 import { services } from "@/data/services";
 import { servicesDetails } from "@/data/servicesDetails";
 import { guides } from "@/data/guides";
+import { actualites } from "@/data/actualites";
 
 const BASE_URL = "https://www.mika-debarras.fr";
 
@@ -72,5 +73,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
   ];
 
-  return [...staticRoutes, ...serviceRoutes, ...zoneRoutes, ...guideRoutes];
+  const actualiteRoutes: MetadataRoute.Sitemap = [
+    { url: `${BASE_URL}/actualites`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.7 },
+    ...actualites.map((a) => ({
+      url: `${BASE_URL}/actualites/${a.slug}`,
+      lastModified: new Date(a.date),
+      changeFrequency: "yearly" as const,
+      priority: 0.6,
+    })),
+  ];
+
+  return [...staticRoutes, ...serviceRoutes, ...zoneRoutes, ...guideRoutes, ...actualiteRoutes];
 }
