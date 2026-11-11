@@ -125,97 +125,158 @@ const testimonials = [
 ];
 
 export default function HomePage() {
+  const featuredZones = zones.slice(0, 18);
+
   return (
     <>
-      {/* ── Hero ── */}
-      <section className="relative bg-dark overflow-hidden">
+      {/* ── HERO SPLIT ── */}
+      <section className="relative bg-dark overflow-hidden min-h-[88vh] flex items-center">
         <div className="absolute inset-0">
-          <Image
-            src={IMG.heroes.accueil}
-            alt=""
-            fill
-            className="object-cover opacity-50"
-            priority
-          />
+          <Image src={IMG.heroes.accueil} alt="" fill className="object-cover opacity-30" priority />
         </div>
-        <div className="absolute inset-0 bg-dark/65" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32 lg:py-36">
-          <div className="max-w-3xl">
-            <div className="flex flex-wrap items-center gap-2 mb-8">
-              <span className="badge">
-                <MapPin className="w-3.5 h-3.5" /> Lyon & Grand Lyon
-              </span>
-              <span className="badge-green">
-                <ShieldCheck className="w-3.5 h-3.5" /> Assurés & certifiés
-              </span>
-            </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-bold text-white leading-[1.1] text-shadow">
-              Débarras professionnel{" "}
-              <span className="text-brand-400">à Lyon</span>
-              <br />
-              <span className="text-white/90">Devis gratuit sous 24h</span>
-            </h1>
-            <p className="mt-6 text-lg md:text-xl text-gray-300/90 leading-relaxed max-w-2xl">
-              Vide maison, vide cave, vide appartement, succession… MiKa Débarras intervient dans tout le Grand Lyon avec rapidité, professionnalisme et respect de l'environnement.
-            </p>
-            <div className="mt-8 flex flex-col sm:flex-row gap-3">
-              <a href="tel:+33623136783" className="btn-phone text-base">
-                <Phone className="w-5 h-5" />
-                06 23 13 67 83
-              </a>
-              <Link href="/contact" className="btn-secondary text-base">
-                Demander un devis gratuit
-                <ArrowRight className="w-5 h-5" />
-              </Link>
-            </div>
-            <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-gray-400">
-              <span className="flex items-center gap-1.5">
-                <CheckCircle2 className="w-4 h-4 text-green-400 flex-shrink-0" /> Devis gratuit & sans engagement
-              </span>
-              <span className="flex items-center gap-1.5">
-                <CheckCircle2 className="w-4 h-4 text-green-400 flex-shrink-0" /> Intervention sous 48h
-              </span>
-              <span className="flex items-center gap-1.5">
-                <CheckCircle2 className="w-4 h-4 text-green-400 flex-shrink-0" /> Éco-responsable
-              </span>
-            </div>
-          </div>
-        </div>
-      </section>
+        <div className="absolute inset-0 bg-gradient-to-r from-dark via-dark/90 to-dark/50" />
 
-      {/* ── Réassurance ── */}
-      <section className="bg-white border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {[
-              { icon: Clock, bg: "bg-brand-50", border: "border-brand-100", iconBg: "gradient-brand", label: "Devis sous 24h", desc: "Réponse garantie, 7j/7 par téléphone ou email." },
-              { icon: Truck, bg: "bg-green-50", border: "border-green-100", iconBg: "bg-green-600", label: "Intervention rapide", desc: "Disponibles sous 48h dans tout le Grand Lyon." },
-              { icon: Leaf, bg: "bg-teal-50", border: "border-teal-100", iconBg: "bg-teal-600", label: "Éco-responsable", desc: "Tri, recyclage et don : nous valorisons vos encombrants." },
-            ].map(({ icon: Icon, bg, border, iconBg, label, desc }) => (
-              <div key={label} className={`flex items-start gap-4 p-5 rounded-2xl ${bg} border ${border}`}>
-                <div className={`w-11 h-11 rounded-xl ${iconBg} flex items-center justify-center flex-shrink-0 shadow-sm`}>
-                  <Icon className="w-5 h-5 text-white" />
-                </div>
-                <div>
-                  <h3 className="font-bold text-gray-900">{label}</h3>
-                  <p className="text-gray-500 text-sm mt-0.5 leading-relaxed">{desc}</p>
+        <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+            {/* Colonne gauche — texte */}
+            <div>
+              <div className="flex flex-wrap items-center gap-2 mb-6">
+                <span className="badge"><MapPin className="w-3.5 h-3.5" /> Lyon & Grand Lyon</span>
+                <span className="badge-green"><ShieldCheck className="w-3.5 h-3.5" /> Assurés & certifiés</span>
+              </div>
+
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-[1.05] tracking-tight">
+                Votre débarras<br />
+                <span className="text-brand-400">professionnel</span><br />
+                à Lyon
+              </h1>
+
+              <p className="mt-6 text-lg text-gray-300 leading-relaxed max-w-lg">
+                Vide maison, vide cave, succession, appartement encombré…
+                MiKa Débarras prend tout en charge, du tri à l'évacuation. <strong className="text-white">Devis gratuit sous 24h.</strong>
+              </p>
+
+              {/* Téléphone très visible */}
+              <div className="mt-8">
+                <a
+                  href="tel:+33623136783"
+                  className="inline-flex items-center gap-3 bg-green-500 hover:bg-green-400 text-white font-bold text-xl px-8 py-5 rounded-2xl shadow-xl shadow-green-900/40 transition-all hover:scale-[1.02]"
+                >
+                  <Phone className="w-6 h-6" />
+                  06 23 13 67 83
+                </a>
+                <p className="text-gray-500 text-xs mt-2 ml-1">Lun–Ven 8h–19h · Sam 9h–17h</p>
+              </div>
+
+              <div className="mt-5">
+                <Link href="/contact" className="inline-flex items-center gap-2 text-brand-400 hover:text-brand-300 font-semibold transition-colors">
+                  Ou remplir le formulaire de devis <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+
+              {/* Trust signals */}
+              <div className="mt-8 flex flex-wrap gap-3">
+                {[
+                  "Devis gratuit & sans engagement",
+                  "Intervention sous 48h",
+                  "Éco-responsable",
+                  "Équipe assurée",
+                ].map((item) => (
+                  <span key={item} className="flex items-center gap-1.5 text-sm text-gray-400">
+                    <CheckCircle2 className="w-4 h-4 text-green-400 flex-shrink-0" /> {item}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Colonne droite — carte stats */}
+            <div className="hidden lg:flex flex-col gap-4">
+              {/* Stats card */}
+              <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-7">
+                <p className="text-gray-400 text-xs font-semibold uppercase tracking-widest mb-5">En chiffres</p>
+                <div className="grid grid-cols-2 gap-5">
+                  {stats.map(({ value, label, icon: Icon }) => (
+                    <div key={label} className="flex items-start gap-3">
+                      <div className="w-9 h-9 gradient-brand rounded-xl flex items-center justify-center flex-shrink-0 shadow-sm">
+                        <Icon className="w-4 h-4 text-white" />
+                      </div>
+                      <div>
+                        <p className="text-2xl font-bold text-white">{value}</p>
+                        <p className="text-gray-400 text-xs mt-0.5">{label}</p>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
-            ))}
+
+              {/* Google rating card */}
+              <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-5 flex items-center gap-4">
+                <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center flex-shrink-0 shadow-sm">
+                  <span className="text-blue-500 font-black text-lg">G</span>
+                </div>
+                <div className="flex-1">
+                  <div className="flex items-center gap-1 mb-1">
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <Star key={i} className="w-4 h-4 text-yellow-400 fill-yellow-400" />
+                    ))}
+                    <span className="text-white font-bold text-sm ml-1">4.9</span>
+                  </div>
+                  <p className="text-gray-400 text-xs">Note moyenne · 450+ avis Google</p>
+                </div>
+                <TrendingUp className="w-5 h-5 text-green-400" />
+              </div>
+
+              {/* Urgence */}
+              <div className="gradient-brand rounded-3xl p-5 flex items-center gap-4">
+                <div className="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <Truck className="w-5 h-5 text-white" />
+                </div>
+                <div>
+                  <p className="text-white font-bold">Disponible cette semaine</p>
+                  <p className="text-orange-100 text-sm">Intervention planifiable sous 48h dans tout le Grand Lyon</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ── Services ── */}
+      {/* ── BANDE SERVICES RAPIDE ── */}
+      <section className="bg-white border-b border-gray-100 py-5">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-wrap gap-3 items-center justify-center md:justify-start">
+            <span className="text-xs font-semibold text-gray-400 uppercase tracking-wide mr-2">Nos interventions :</span>
+            {services.map((s) => {
+              const Icon = iconMap[s.icon] || Home;
+              return (
+                <Link
+                  key={s.slug}
+                  href={`/services#${s.slug}`}
+                  className="flex items-center gap-1.5 px-3 py-1.5 bg-gray-50 border border-gray-200 rounded-full text-sm text-gray-600 hover:bg-brand-50 hover:border-brand-300 hover:text-brand-700 transition-all font-medium"
+                >
+                  <Icon className="w-3.5 h-3.5" />
+                  {s.titre}
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ── SERVICES DÉTAILLÉS ── */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <span className="badge mb-3">Nos prestations</span>
-            <h2 className="section-title">Tous types de débarras à Lyon</h2>
-            <p className="section-subtitle mx-auto mt-3">
-              Quelle que soit la nature de votre besoin, notre équipe vous accompagne de A à Z.
-            </p>
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12">
+            <div>
+              <span className="badge mb-3">Nos prestations</span>
+              <h2 className="section-title">Tous types de débarras<br />à Lyon & Grand Lyon</h2>
+            </div>
+            <Link href="/services" className="btn-secondary self-start md:self-auto flex-shrink-0">
+              Tous nos services <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
+
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((service) => {
               const IconComp = iconMap[service.icon] || Home;
@@ -223,9 +284,9 @@ export default function HomePage() {
                 <Link
                   key={service.slug}
                   href={`/services#${service.slug}`}
-                  className="bg-white rounded-2xl border border-gray-100 shadow-[0_1px_3px_rgba(0,0,0,0.05)] group hover:-translate-y-1 hover:shadow-md transition-all duration-200 overflow-hidden flex flex-col"
+                  className="bg-white rounded-2xl border border-gray-100 shadow-sm group hover:-translate-y-1 hover:shadow-lg transition-all duration-200 overflow-hidden flex flex-col"
                 >
-                  <div className="relative h-36 w-full overflow-hidden">
+                  <div className="relative h-44 w-full overflow-hidden">
                     <Image
                       src={service.image}
                       alt={`${service.titre} à Lyon`}
@@ -233,141 +294,109 @@ export default function HomePage() {
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-                    <div className="absolute bottom-2 left-3 bg-white/90 backdrop-blur-sm text-brand-700 text-xs font-semibold px-2 py-0.5 rounded-md">
-                      {service.prix}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                    <div className="absolute bottom-3 left-3 right-3 flex items-end justify-between">
+                      <div className="w-9 h-9 rounded-xl gradient-brand flex items-center justify-center shadow-md">
+                        <IconComp className="w-5 h-5 text-white" />
+                      </div>
+                      <span className="bg-white/90 backdrop-blur-sm text-brand-700 text-xs font-bold px-2.5 py-1 rounded-lg">{service.prix}</span>
                     </div>
                   </div>
                   <div className="p-5 flex flex-col flex-1">
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="w-9 h-9 rounded-xl gradient-brand flex items-center justify-center flex-shrink-0 shadow-sm group-hover:shadow-brand-600/40 transition-shadow">
-                        <IconComp className="w-5 h-5 text-white" />
-                      </div>
-                      <h3 className="text-base font-bold text-gray-900">{service.titre}</h3>
-                    </div>
+                    <h3 className="text-base font-bold text-gray-900 mb-2">{service.titre}</h3>
                     <p className="text-gray-500 text-sm leading-relaxed flex-1">{service.description}</p>
-                    <div className="flex items-center justify-end mt-4 pt-3 border-t border-gray-100">
-                      <span className="text-brand-600 text-xs font-medium mr-auto">En savoir plus</span>
-                      <ArrowRight className="w-4 h-4 text-brand-600 group-hover:translate-x-1 transition-transform" />
+                    <div className="flex items-center gap-1 mt-4 text-brand-600 text-sm font-semibold group-hover:gap-2 transition-all">
+                      Demander un devis <ArrowRight className="w-4 h-4" />
                     </div>
                   </div>
                 </Link>
               );
             })}
           </div>
-          <div className="text-center mt-10">
-            <Link href="/services" className="btn-primary">
-              Voir tous nos services
-              <ArrowRight className="w-5 h-5" />
-            </Link>
-          </div>
         </div>
       </section>
 
-      {/* ── Chiffres clés ── */}
-      <section className="py-16 gradient-brand">
+      {/* ── CHIFFRES CLÉS ── */}
+      <section className="py-14 bg-dark">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-            {stats.map((stat) => {
-              const Icon = stat.icon;
-              return (
-                <div key={stat.label} className="text-center">
-                  <div className="w-10 h-10 bg-white/15 rounded-xl flex items-center justify-center mx-auto mb-4">
-                    <Icon className="w-5 h-5 text-white/80" />
-                  </div>
-                  <div className="text-4xl md:text-5xl font-bold text-white tracking-tight">{stat.value}</div>
-                  <div className="text-orange-100/80 text-sm mt-2 font-medium">{stat.label}</div>
-                </div>
-              );
-            })}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-white/5 rounded-2xl overflow-hidden border border-white/10">
+            {stats.map(({ value, label, icon: Icon }) => (
+              <div key={label} className="bg-dark flex flex-col items-center justify-center py-10 px-6 text-center">
+                <Icon className="w-6 h-6 text-brand-400 mb-3" />
+                <p className="text-4xl md:text-5xl font-black text-white tracking-tight">{value}</p>
+                <p className="text-gray-400 text-sm mt-2">{label}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* ── Avant / Après ── */}
+      {/* ── AVANT / APRÈS ── */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <span className="badge mb-3">Nos réalisations</span>
-            <h2 className="section-title">Avant / Après</h2>
-            <p className="section-subtitle mx-auto mt-3">
-              Découvrez la transformation d'espaces que nous avons réalisés pour nos clients à Lyon.
-            </p>
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12">
+            <div>
+              <span className="badge mb-3">Nos réalisations</span>
+              <h2 className="section-title">Le résultat parle<br />pour lui-même</h2>
+            </div>
+            <Link href="/realisations" className="btn-secondary self-start md:self-auto flex-shrink-0">
+              Toutes nos réalisations <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
 
-          {/* Diaporama galerie */}
           <div className="mb-10">
             <ImageCarousel
               slides={[
                 { src: IMG.galerie[0], alt: "Débarras vide maison — mobilier ancien à évacuer", caption: "Vide maison Lyon 7ème — 15 tonnes" },
-                { src: IMG.galerie[1], alt: "Pièce encombrée avant débarras — mobilier et objets divers", caption: "Appartement succession Lyon 3ème — 6 tonnes" },
-                { src: IMG.galerie[2], alt: "Logement à vider — encombrants et meubles anciens", caption: "Cave d\'immeuble Villeurbanne — 4 tonnes" },
-                { src: IMG.galerie[3], alt: "Espace libéré après débarras — pièce vide et propre", caption: "Après débarras — espace récupéré" },
-                { src: IMG.galerie[4], alt: "Mobilier ancien et succession — débarras discret à Lyon", caption: "Succession Caluire-et-Cuire — 3 tonnes" },
-                { src: IMG.galerie[5], alt: "Appartement vidé et nettoyé après intervention MiKa", caption: "Résultat final — logement prêt à remettre" },
+                { src: IMG.galerie[1], alt: "Pièce encombrée avant débarras", caption: "Appartement succession Lyon 3ème — 6 tonnes" },
+                { src: IMG.galerie[2], alt: "Cave à vider — encombrants et meubles", caption: "Cave d'immeuble Villeurbanne — 4 tonnes" },
+                { src: IMG.galerie[3], alt: "Espace libéré après débarras", caption: "Après débarras — espace récupéré" },
+                { src: IMG.galerie[4], alt: "Succession — débarras discret à Lyon", caption: "Succession Caluire-et-Cuire — 3 tonnes" },
+                { src: IMG.galerie[5], alt: "Appartement vidé après intervention", caption: "Résultat final — logement prêt à remettre" },
               ]}
               aspectRatio="aspect-[16/7]"
               sizes="(max-width: 1280px) 100vw, 1280px"
             />
           </div>
 
-          {/* Paires Avant/Après */}
-          <div className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-2 -mx-4 px-4 sm:-mx-6 sm:px-6 lg:mx-0 lg:px-0">
+          <div className="flex gap-5 overflow-x-auto snap-x snap-mandatory pb-2 -mx-4 px-4 sm:-mx-6 sm:px-6 lg:mx-0 lg:px-0">
             {[
-              { titre: "Vide maison Lyon 7ème", type: "Vide maison — 2 j — 15 t", srcAvant: IMG.avant[0], srcApres: IMG.apres[0], altAvant: "Avant débarras vide maison Lyon 7ème", altApres: "Après débarras vide maison Lyon 7ème" },
+              { titre: "Vide maison Lyon 7ème", type: "Vide maison — 2 j — 15 t", srcAvant: IMG.avant[0], srcApres: IMG.apres[0], altAvant: "Avant vide maison Lyon 7ème", altApres: "Après vide maison Lyon 7ème" },
               { titre: "Cave Villeurbanne", type: "Vide cave — 1 j — 4 t", srcAvant: IMG.avant[1], srcApres: IMG.apres[1], altAvant: "Avant vide cave Villeurbanne", altApres: "Après vide cave Villeurbanne" },
               { titre: "Appartement Lyon 3ème", type: "Succession — 1 j — 6 t", srcAvant: IMG.avant[2], srcApres: IMG.apres[2], altAvant: "Avant succession Lyon 3ème", altApres: "Après succession Lyon 3ème" },
               { titre: "Grenier Caluire", type: "Vide grenier — 1 j — 3 t", srcAvant: IMG.avant[3], srcApres: IMG.apres[3], altAvant: "Avant vide grenier Caluire", altApres: "Après vide grenier Caluire" },
-              { titre: "Local commercial Bron", type: "Débarras local — 3 j — 25 t", srcAvant: IMG.avant[4], srcApres: IMG.apres[4], altAvant: "Avant débarras local Bron", altApres: "Après débarras local Bron" },
+              { titre: "Local Bron", type: "Débarras local — 3 j — 25 t", srcAvant: IMG.avant[4], srcApres: IMG.apres[4], altAvant: "Avant débarras local Bron", altApres: "Après débarras local Bron" },
               { titre: "Maison Saint-Priest", type: "Vide maison — 1 j — 8 t", srcAvant: IMG.avant[5], srcApres: IMG.apres[5], altAvant: "Avant vide maison Saint-Priest", altApres: "Après vide maison Saint-Priest" },
             ].map((item, i) => (
-              <div key={i} className="snap-center flex-shrink-0 w-[85vw] sm:w-[calc(50%-12px)] lg:w-[calc(33.33%-16px)] rounded-2xl overflow-hidden border border-gray-100 shadow-[0_1px_4px_rgba(0,0,0,0.06)]">
-                <div className="grid grid-cols-2 h-48">
-                  <div className="relative border-r border-gray-200">
-                    <Image
-                      src={item.srcAvant}
-                      alt={item.altAvant}
-                      fill
-                      sizes="25vw"
-                      className="object-cover"
-                    />
-                    <div className="absolute top-2 left-2 z-10 bg-red-500/90 text-white text-[10px] font-bold px-2 py-0.5 rounded-md tracking-wide">AVANT</div>
+              <div key={i} className="snap-center flex-shrink-0 w-[85vw] sm:w-[calc(50%-10px)] lg:w-[calc(33.33%-14px)] rounded-2xl overflow-hidden border border-gray-100 shadow-sm">
+                <div className="grid grid-cols-2 h-52">
+                  <div className="relative border-r border-gray-100">
+                    <Image src={item.srcAvant} alt={item.altAvant} fill sizes="25vw" className="object-cover" />
+                    <div className="absolute top-2 left-2 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-md tracking-wide">AVANT</div>
                   </div>
                   <div className="relative">
-                    <Image
-                      src={item.srcApres}
-                      alt={item.altApres}
-                      fill
-                      sizes="25vw"
-                      className="object-cover"
-                    />
-                    <div className="absolute top-2 right-2 z-10 bg-green-600/90 text-white text-[10px] font-bold px-2 py-0.5 rounded-md tracking-wide">APRÈS</div>
+                    <Image src={item.srcApres} alt={item.altApres} fill sizes="25vw" className="object-cover" />
+                    <div className="absolute top-2 right-2 bg-green-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-md tracking-wide">APRÈS</div>
                   </div>
                 </div>
-                <div className="p-4 bg-gray-50">
-                  <h3 className="font-bold text-gray-900">{item.titre}</h3>
-                  <p className="text-gray-500 text-sm mt-0.5">{item.type}</p>
+                <div className="p-4 bg-gray-50 border-t border-gray-100">
+                  <h3 className="font-bold text-gray-900 text-sm">{item.titre}</h3>
+                  <p className="text-gray-400 text-xs mt-0.5">{item.type}</p>
                 </div>
               </div>
             ))}
           </div>
-          <div className="text-center mt-10">
-            <Link href="/realisations" className="btn-primary">
-              Voir toutes nos réalisations
-              <ArrowRight className="w-5 h-5" />
-            </Link>
-          </div>
         </div>
       </section>
 
-      {/* ── Processus ── */}
+      {/* ── PROCESSUS ── */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
             <span className="badge mb-3">Comment ça marche</span>
-            <h2 className="section-title">Notre processus en 4 étapes</h2>
+            <h2 className="section-title">Simple, rapide, sans stress</h2>
             <p className="section-subtitle mx-auto mt-3">
-              Un processus clair et transparent du premier contact à la restitution de votre espace.
+              De votre premier appel à la remise des clés — on s'occupe de tout.
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 relative">
@@ -378,8 +407,8 @@ export default function HomePage() {
                   {idx < processSteps.length - 1 && (
                     <div className="hidden lg:block absolute top-[52px] left-[calc(50%+36px)] right-[calc(-50%+36px)] h-px bg-brand-100 z-0" />
                   )}
-                  <div className="card relative z-10 text-center pt-8">
-                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-8 h-8 bg-brand-600 text-white text-xs font-bold rounded-full flex items-center justify-center shadow-md shadow-brand-600/30">
+                  <div className="card relative z-10 text-center pt-8 hover:shadow-md transition-shadow">
+                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-8 h-8 bg-brand-600 text-white text-xs font-black rounded-full flex items-center justify-center shadow-md shadow-brand-600/30">
                       {step.num}
                     </div>
                     <div className="w-12 h-12 gradient-brand rounded-xl flex items-center justify-center mx-auto mb-4 shadow-md">
@@ -392,30 +421,99 @@ export default function HomePage() {
               );
             })}
           </div>
+          <div className="text-center mt-10">
+            <a href="tel:+33623136783" className="btn-phone text-base">
+              <Phone className="w-5 h-5" /> Appelez pour démarrer — 06 23 13 67 83
+            </a>
+          </div>
         </div>
       </section>
 
-      {/* ── Techniques ── */}
+      {/* ── TÉMOIGNAGES ── */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <span className="badge mb-3">Avis clients</span>
+            <h2 className="section-title">Ils nous ont fait confiance</h2>
+            <div className="flex items-center justify-center gap-2 mt-3">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <Star key={i} className="w-5 h-5 text-yellow-400 fill-yellow-400" />
+              ))}
+              <span className="font-bold text-gray-900 ml-1">4.9/5</span>
+              <span className="text-gray-400 text-sm">· 450+ avis Google</span>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {testimonials.map((t, i) => (
+              <div key={i} className="bg-gray-50 border border-gray-100 rounded-2xl p-6 flex flex-col gap-4 hover:shadow-md transition-shadow">
+                <div className="flex items-start justify-between">
+                  <div className="flex items-center gap-0.5">
+                    {Array.from({ length: t.rating }).map((_, j) => (
+                      <Star key={j} className="w-4 h-4 text-yellow-400 fill-yellow-400" />
+                    ))}
+                  </div>
+                  <div className="w-7 h-7 bg-white rounded-lg flex items-center justify-center shadow-sm border border-gray-100">
+                    <span className="text-blue-500 font-black text-sm">G</span>
+                  </div>
+                </div>
+                <p className="text-gray-700 text-sm leading-relaxed flex-1 italic">&ldquo;{t.text}&rdquo;</p>
+                <div className="flex items-center gap-3 pt-3 border-t border-gray-200">
+                  <div className="w-9 h-9 gradient-brand rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0">
+                    {t.name[0]}
+                  </div>
+                  <div>
+                    <p className="font-semibold text-gray-900 text-sm">{t.name}</p>
+                    <p className="text-gray-400 text-xs flex items-center gap-1"><MapPin className="w-3 h-3" />{t.ville}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── POURQUOI MIKA ── */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="relative rounded-3xl overflow-hidden aspect-square bg-gray-100 order-last lg:order-first">
+              <Image
+                src={IMG.team}
+                alt="Équipe MiKa Débarras — professionnels à Lyon"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-dark/60 to-transparent" />
+              <div className="absolute bottom-6 left-6 right-6">
+                <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-4 shadow-xl">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 gradient-brand rounded-xl flex items-center justify-center flex-shrink-0">
+                      <Award className="w-5 h-5 text-white" />
+                    </div>
+                    <div>
+                      <p className="font-bold text-gray-900 text-sm">10 ans d'expérience</p>
+                      <p className="text-gray-500 text-xs">Spécialiste débarras Lyon depuis 2014</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <div>
-              <span className="badge mb-4">Notre approche</span>
-              <h2 className="section-title">Des techniques professionnelles au service de votre débarras</h2>
-              <p className="text-gray-600 mt-4 leading-relaxed">
-                Chez MiKa Débarras, chaque intervention est préparée et exécutée avec méthode. Nous combinons savoir-faire humain et équipements adaptés pour garantir efficacité et respect des lieux.
-              </p>
-              <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <span className="badge mb-4">Notre engagement</span>
+              <h2 className="section-title mb-6">Pourquoi choisir MiKa Débarras ?</h2>
+              <div className="space-y-4">
                 {techniques.map((t) => {
                   const Icon = t.icon;
                   return (
-                    <div key={t.title} className="flex items-start gap-3">
-                      <div className="w-9 h-9 rounded-xl bg-brand-50 border border-brand-100 flex items-center justify-center flex-shrink-0">
-                        <Icon className="w-4 h-4 text-brand-600" />
+                    <div key={t.title} className="flex gap-4 p-4 bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                      <div className="w-10 h-10 rounded-xl gradient-brand flex items-center justify-center flex-shrink-0 shadow-sm">
+                        <Icon className="w-5 h-5 text-white" />
                       </div>
                       <div>
-                        <h4 className="font-semibold text-gray-900 text-sm">{t.title}</h4>
-                        <p className="text-gray-500 text-[13px] mt-0.5 leading-relaxed">{t.desc}</p>
+                        <h4 className="font-bold text-gray-900 text-sm">{t.title}</h4>
+                        <p className="text-gray-500 text-sm mt-0.5 leading-relaxed">{t.desc}</p>
                       </div>
                     </div>
                   );
@@ -423,121 +521,79 @@ export default function HomePage() {
               </div>
               <div className="mt-8">
                 <Link href="/a-propos" className="btn-primary">
-                  En savoir plus sur MiKa Débarras
-                  <ArrowRight className="w-5 h-5" />
+                  Notre histoire <ArrowRight className="w-5 h-5" />
                 </Link>
               </div>
             </div>
-            <div className="relative rounded-3xl overflow-hidden aspect-square bg-gray-100">
-              <Image
-                src={IMG.team}
-                alt="Équipe MiKa Débarras — débarasseurs professionnels à Lyon"
-                fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover"
-                priority
-              />
+          </div>
+        </div>
+      </section>
+
+      {/* ── ZONES ── */}
+      <section className="py-16 bg-white border-t border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8">
+            <div>
+              <span className="badge mb-3"><MapPin className="w-3.5 h-3.5" /> Couverture</span>
+              <h2 className="section-title">112 communes autour de Lyon</h2>
             </div>
+            <Link href="/zones-intervention" className="btn-secondary self-start md:self-auto flex-shrink-0">
+              Voir toutes les villes <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
-        </div>
-      </section>
-
-      {/* ── Témoignages ── */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <span className="badge mb-3">Avis clients</span>
-            <h2 className="section-title">Ce que disent nos clients</h2>
-            <p className="section-subtitle mx-auto mt-3">
-              Plus de 98% de clients satisfaits — note moyenne 4.9/5 sur Google
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {testimonials.map((t, i) => (
-              <div key={i} className="card flex flex-col gap-4">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-0.5">
-                    {Array.from({ length: t.rating }).map((_, j) => (
-                      <Star key={j} className="w-4 h-4 text-yellow-400 fill-yellow-400" />
-                    ))}
-                  </div>
-                  <span className="text-4xl text-gray-100 font-serif leading-none select-none">&ldquo;</span>
-                </div>
-                <p className="text-gray-600 text-sm leading-relaxed flex-1">{t.text}</p>
-                <div className="flex items-center gap-3 pt-3 border-t border-gray-50">
-                  <div className="w-9 h-9 gradient-brand rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0 shadow-sm">
-                    {t.name[0]}
-                  </div>
-                  <div>
-                    <p className="font-semibold text-gray-900 text-sm">{t.name}</p>
-                    <p className="text-gray-400 text-xs">{t.ville}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Zones ── */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <span className="badge mb-3">
-              <MapPin className="w-3.5 h-3.5" /> Zones couvertes
-            </span>
-            <h2 className="section-title">Débarras dans tout le Grand Lyon</h2>
-            <p className="section-subtitle mx-auto mt-3">
-              Nous intervenons dans Lyon et toute l'agglomération lyonnaise.
-            </p>
-          </div>
-          <div className="flex flex-wrap justify-center gap-2.5">
-            {zones.map((zone) => (
+          <div className="flex flex-wrap gap-2">
+            {featuredZones.map((zone) => (
               <Link
                 key={zone.slug}
                 href={`/zones-intervention/${zone.slug}`}
-                className="flex items-center gap-1.5 px-4 py-2.5 bg-white hover:bg-brand-50 border border-gray-200 hover:border-brand-300 rounded-full text-sm text-gray-600 hover:text-brand-700 transition-all font-medium shadow-[0_1px_3px_rgba(0,0,0,0.05)] hover:shadow-[0_2px_8px_rgba(234,88,12,0.12)]"
+                className="flex items-center gap-1.5 px-3.5 py-2 bg-gray-50 hover:bg-brand-50 border border-gray-200 hover:border-brand-300 rounded-full text-sm text-gray-600 hover:text-brand-700 transition-all font-medium"
               >
-                <MapPin className="w-3.5 h-3.5 text-brand-400" />
+                <MapPin className="w-3 h-3 text-brand-400" />
                 {zone.nom}
               </Link>
             ))}
-          </div>
-          <div className="text-center mt-8">
-            <Link href="/zones-intervention" className="btn-secondary">
-              Voir toutes les zones
-              <ArrowRight className="w-5 h-5" />
+            <Link
+              href="/zones-intervention"
+              className="flex items-center gap-1.5 px-3.5 py-2 bg-brand-50 border border-brand-200 rounded-full text-sm text-brand-600 font-semibold hover:bg-brand-100 transition-all"
+            >
+              +94 autres communes <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
         </div>
       </section>
 
-      {/* ── CTA Final ── */}
-      <section className="py-24 bg-dark relative overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: "radial-gradient(circle at 1px 1px, white 1px, transparent 0)", backgroundSize: "40px 40px" }} />
-        <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="inline-flex w-16 h-16 gradient-brand rounded-2xl items-center justify-center mb-8 shadow-xl shadow-brand-600/30">
-            <Truck className="w-8 h-8 text-white" />
+      {/* ── CTA FINAL ── */}
+      <section className="py-20 gradient-brand relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "radial-gradient(circle at 1px 1px, white 1px, transparent 0)", backgroundSize: "32px 32px" }} />
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-white leading-tight">
+                Prêt à libérer<br />de l&apos;espace ?
+              </h2>
+              <p className="mt-4 text-orange-100 text-lg leading-relaxed">
+                Devis gratuit, sans engagement. On vous répond sous 24h et on intervient sous 48h.
+              </p>
+              <p className="mt-4 text-orange-200 text-sm">
+                Lun–Ven 8h–19h · Sam 9h–17h · Urgences acceptées
+              </p>
+            </div>
+            <div className="flex flex-col gap-4">
+              <a
+                href="tel:+33623136783"
+                className="flex items-center justify-center gap-3 bg-white text-gray-900 font-bold text-lg px-7 py-5 rounded-2xl shadow-xl hover:bg-gray-50 transition-all hover:scale-[1.02]"
+              >
+                <Phone className="w-6 h-6 text-green-600" />
+                06 23 13 67 83
+              </a>
+              <Link
+                href="/contact"
+                className="flex items-center justify-center gap-2 border-2 border-white/60 text-white font-semibold px-7 py-4 rounded-2xl hover:bg-white/10 transition-all"
+              >
+                Formulaire de devis en ligne <ArrowRight className="w-5 h-5" />
+              </Link>
+            </div>
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight">
-            Prêt à libérer de l&apos;espace ?
-          </h2>
-          <p className="mt-4 text-gray-400 text-lg max-w-xl mx-auto leading-relaxed">
-            Contactez MiKa Débarras dès aujourd&apos;hui. Devis gratuit, sans engagement, réponse sous 24h.
-          </p>
-          <div className="mt-10 flex flex-col sm:flex-row gap-3 justify-center">
-            <a href="tel:+33623136783" className="btn-phone text-base">
-              <Phone className="w-5 h-5" />
-              06 23 13 67 83
-            </a>
-            <Link href="/contact" className="btn-secondary text-base">
-              Demander un devis en ligne
-              <ArrowRight className="w-5 h-5" />
-            </Link>
-          </div>
-          <p className="mt-8 text-gray-600 text-sm">
-            Lun–Ven 8h–19h · Sam 9h–17h · Urgences ponctuelles acceptées
-          </p>
         </div>
       </section>
     </>
