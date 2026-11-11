@@ -5,7 +5,7 @@ import { Phone, FileText } from "lucide-react";
 
 export default function StickyMobileCTA() {
   const pathname = usePathname();
-  const devisHref = pathname === "/" ? "#devis" : "/contact";
+  const devisHref = pathname === "/contact" ? "/contact" : "#devis";
 
   return (
     <div className="md:hidden fixed bottom-0 inset-x-0 z-50 bg-white/95 backdrop-blur-md border-t border-gray-200 shadow-[0_-4px_16px_rgba(0,0,0,0.08)] p-3 grid grid-cols-2 gap-3">
